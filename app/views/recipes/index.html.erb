@@ -1,0 +1,15 @@
+<%= form_tag("/", method: "get") do %>
+    <%= label_tag("Search for:") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("Search") %>
+<% end %>
+
+<table>
+  <% @data.each do |recipe| %>
+    <tr>
+      <td> <%= link_to image_tag(recipe["image_url"], width: '100px', height: '100px'), recipe["source_url"] %> </td>
+      <td> <%= link_to sanitize(recipe["title"]), recipe["source_url"] %> </td>
+      <td> <%= recipe["social_rank"] %> </td>
+    </tr>
+  <% end %>
+</table>
